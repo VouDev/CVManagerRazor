@@ -1,0 +1,66 @@
+﻿@page "{id:int?}"
+@model CVManagerRazor.Pages.Entries.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Edit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Entry.Id" />
+            <div class="form-group mb-3">
+                <label asp-for="Entry.FirstName" class="control-label"></label>
+                <input asp-for="Entry.FirstName" class="form-control" />
+                <span asp-validation-for="Entry.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Entry.LastName" class="control-label"></label>
+                <input asp-for="Entry.LastName" class="form-control" />
+                <span asp-validation-for="Entry.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Entry.Email" class="control-label"></label>
+                <input asp-for="Entry.Email" class="form-control" />
+                <span asp-validation-for="Entry.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Entry.Mobile" class="control-label"></label>
+                <input asp-for="Entry.Mobile" class="form-control" />
+                <span asp-validation-for="Entry.Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Entry.Degree" class="control-label"></label>
+                <input asp-for="Entry.Degree" type=" text" list="degrees" class="form-control" placeholder="Type your degree..." />
+                <datalist id="degrees">
+                    @foreach (var item in Model.Degrees)
+                    {
+                        <option>@item</option>
+                    }
+                </datalist>
+            </div>
+            <div class="form-group mb-3">
+                <div>
+                    <label asp-for="Entry.File" class="control-label"></label>
+                    <span class="mySpanMargin">@Model.FileName</span>
+                </div>
+                <input asp-for="Entry.File" name="newFile" class="form-control" type="file" />
+                <span asp-validation-for="Entry.File" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

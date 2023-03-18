@@ -1,0 +1,87 @@
+﻿@page
+@model CVManagerRazor.Pages.Entries.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<p>
+    <a asp-page="Create" class="btn btn-danger">Create New</a>
+    <form>
+        Search: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+</form>
+</p>*@
+
+<div class="row mb-3">
+    <div class="col-sm-4">
+        <a asp-page="Create" class="btn btn-outline-primary">Create New</a>
+    </div>
+    <div class="col-sm-8 text-end">
+        <form class="form-inline">
+            Search: <input type="text" asp-for="SearchString" />
+            <input type="submit" value="Filter" />
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].Degree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].File)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry[0].DateCreated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Entry) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                <span>@item.Email</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Degree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.File)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id" class="myATag">Edit</a> 
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="myATag" style="color:green">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="myATag" style="color:mediumvioletred">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
