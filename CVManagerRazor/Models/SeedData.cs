@@ -25,29 +25,11 @@ public static class SeedData
             context.Entry.AddRange(
                 new Entry
                 {
-                    FirstName = "easdas",
-                    LastName = "asdasdasdasd",
-                    Email = "vwrergrew",
-                    Mobile = "asfhrh",
-                    Degree = "adsasdasd"
-                },
-
-                new Entry
-                {
-                    FirstName = "easdas",
-                    LastName = "asdasdasdasd",
-                    Email = "vwrergrew",
-                    Mobile = "asfhrh",
-                    Degree = "adsasdasd"
-                },
-
-                new Entry
-                {
-                    FirstName = "easdas",
-                    LastName = "asdasdasdasd",
-                    Email = "vwrergrew",
-                    Mobile = "asfhrh",
-                    Degree = "adsasdasd"
+                    FirstName = "test",
+                    LastName = "test",
+                    Email = "test@test.org",
+                    Mobile = "6999999999",
+                    Degree = "test"
                 }
             );
             context.SaveChanges();
